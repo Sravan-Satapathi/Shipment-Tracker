@@ -5,7 +5,8 @@ First Commit
 
 Second Commit
 <img width="928" height="142" alt="image" src="https://github.com/user-attachments/assets/337d25c8-8e14-4d94-9801-918f4ded7f3a" />
-PS D:\Projects\Shipsy\Shipsy_Backend> git log --pretty=format:"%h | %ad | %s" --date=short
-f4264f5 | 2025-08-14 | Authentication Files Part 1
-694efdd | 2025-08-14 | Git Log
-966d4cd | 2025-08-14 | Security Configuration Files
+
+Third Commit
+<img width="1144" height="192" alt="image" src="https://github.com/user-attachments/assets/105450ea-adf1-40bc-91ad-b17b845859e8" />
+
+
