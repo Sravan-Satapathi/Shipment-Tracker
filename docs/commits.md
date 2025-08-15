@@ -17,3 +17,6 @@ Fifth Commit
 
 Sixth Commit
 <img width="1143" height="330" alt="image" src="https://github.com/user-attachments/assets/3a30e040-f939-4237-94e8-ddee71c653f4" />
+
+Seventh Commit
+<img width="1118" height="446" alt="image" src="https://github.com/user-attachments/assets/3f1e6c95-ef74-47ae-9ab0-a57ba9c0afa6" />
