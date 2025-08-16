@@ -11,11 +11,5 @@ import java.util.List;
 public interface ShipmentRepository extends JpaRepository<ShipmentEntity, Long>,
         JpaSpecificationExecutor<ShipmentEntity> {
 
-<<<<<<< HEAD
-//    List<ShipmentEntity> findByUserId(String userId);
-    Page<ShipmentEntity> findByUserId(String userId, Pageable pageable);
-=======
     List<ShipmentEntity> findByUserId(String userId);
-//    Page<ShipmentEntity> findByUserId(String userId, Pageable pageable);
->>>>>>> 9ea815c (Final Push)
 }
