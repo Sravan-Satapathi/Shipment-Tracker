@@ -5,11 +5,19 @@ const ExpenseFilters = ({ onFilterChange, onClearFilters }) => {
     const [showFilters, setShowFilters] = useState(false);
     const [filters, setFilters] = useState({
         keyword: '',
+<<<<<<< HEAD
         category: '',
         startDate: '',
         endDate: '',
         minAmount: '',
         maxAmount: '',
+=======
+        shipmentType: '',
+        startDate: '',
+        endDate: '',
+        minCost: '',
+        maxCost: '',
+>>>>>>> 9ea815c (Final Push)
     });
 
     const categories = [
@@ -25,11 +33,19 @@ const ExpenseFilters = ({ onFilterChange, onClearFilters }) => {
     const handleClearFilters = () => {
         const clearedFilters = {
             keyword: '',
+<<<<<<< HEAD
             category: '',
             startDate: '',
             endDate: '',
             minAmount: '',
             maxAmount: ''
+=======
+            shipmentType: '',
+            startDate: '',
+            endDate: '',
+            minCost: '',
+            maxCost: ''
+>>>>>>> 9ea815c (Final Push)
         };
         setFilters(clearedFilters);
         onClearFilters();
@@ -91,8 +107,13 @@ const ExpenseFilters = ({ onFilterChange, onClearFilters }) => {
                                 </label>
                                 <select
                                     className="form-control"
+<<<<<<< HEAD
                                     value={filters.category}
                                     onChange={(e) => handleFilterChange('category', e.target.value)}
+=======
+                                    value={filters.shipmentType}
+                                    onChange={(e) => handleFilterChange('shipmentType', e.target.value)}
+>>>>>>> 9ea815c (Final Push)
                                 >
                                     <option value="">All Categories</option>
                                     {categories.map(category => (
@@ -139,8 +160,13 @@ const ExpenseFilters = ({ onFilterChange, onClearFilters }) => {
                                     placeholder="0.00"
                                     step="0.01"
                                     min="0"
+<<<<<<< HEAD
                                     value={filters.minAmount}
                                     onChange={(e) => handleFilterChange('minAmount', e.target.value)}
+=======
+                                    value={filters.minCost}
+                                    onChange={(e) => handleFilterChange('minCost', e.target.value)}
+>>>>>>> 9ea815c (Final Push)
                                 />
                             </div>
 
@@ -154,8 +180,13 @@ const ExpenseFilters = ({ onFilterChange, onClearFilters }) => {
                                     placeholder="0.00"
                                     step="0.01"
                                     min="0"
+<<<<<<< HEAD
                                     value={filters.maxAmount}
                                     onChange={(e) => handleFilterChange('maxAmount', e.target.value)}
+=======
+                                    value={filters.maxCost}
+                                    onChange={(e) => handleFilterChange('maxCost', e.target.value)}
+>>>>>>> 9ea815c (Final Push)
                                 />
                             </div>
                         </div>

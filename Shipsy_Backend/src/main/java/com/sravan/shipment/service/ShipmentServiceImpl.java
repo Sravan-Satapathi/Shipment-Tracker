@@ -5,7 +5,10 @@ import com.sravan.shipment.dto.ShipmentFilterRequest;
 import com.sravan.shipment.dto.ShipmentRequest;
 import com.sravan.shipment.dto.ShipmentResponse;
 import com.sravan.shipment.entity.ShipmentEntity;
+<<<<<<< HEAD
 import com.sravan.shipment.entity.ShipmentType;
+=======
+>>>>>>> 9ea815c (Final Push)
 import com.sravan.shipment.repository.ShipmentRepository;
 import com.sravan.shipment.specification.ShipmentSpecification;
 import lombok.RequiredArgsConstructor;
@@ -33,7 +36,11 @@ public class ShipmentServiceImpl implements ShipmentService {
                 .shipmentTitle(request.getShipmentTitle())
                 .shipmentDescription(request.getShipmentDescription())
                 .shipmentType(request.getShipmentType())
+<<<<<<< HEAD
                 .isDelivered(request.getIsDelivered())
+=======
+                .delivered(request.getDelivered())
+>>>>>>> 9ea815c (Final Push)
                 .cost(request.getCost())
                 .shipmentDate(request.getShipmentDate())
                 .build();
@@ -52,7 +59,11 @@ public class ShipmentServiceImpl implements ShipmentService {
         shipment.setShipmentTitle(request.getShipmentTitle());
         shipment.setShipmentDescription(request.getShipmentDescription());
         shipment.setShipmentType(request.getShipmentType());
+<<<<<<< HEAD
         shipment.setDelivered(request.getIsDelivered());
+=======
+        shipment.setDelivered(request.getDelivered());
+>>>>>>> 9ea815c (Final Push)
         shipment.setCost(request.getCost());
         shipment.setShipmentDate(request.getShipmentDate());
 
@@ -70,6 +81,7 @@ public class ShipmentServiceImpl implements ShipmentService {
         return convertToResponse(shipment);
     }
 
+<<<<<<< HEAD
 //    @Override
 //    public List<ShipmentResponse> getAllShipments(String userId) {
 //        return shipmentRepository.findByUserId(userId)
@@ -83,6 +95,21 @@ public class ShipmentServiceImpl implements ShipmentService {
     return shipmentRepository.findByUserId(userId, pageable)
             .map(this::convertToResponse);
     }
+=======
+    @Override
+    public List<ShipmentResponse> getAllShipments(String userId) {
+        return shipmentRepository.findByUserId(userId)
+                .stream()
+                .map(this::convertToResponse)
+                .sorted(Comparator.comparing(ShipmentResponse::getShipmentDate).reversed())
+                .collect(Collectors.toList());
+    }
+//    @Override
+//    public Page<ShipmentResponse> getAllShipments(String userId, Pageable pageable) {
+//    return shipmentRepository.findByUserId(userId, pageable)
+//            .map(this::convertToResponse);
+//    }
+>>>>>>> 9ea815c (Final Push)
 
     @Override
     public void deleteShipment(String userId, long shipmentId) {
@@ -101,12 +128,17 @@ public class ShipmentServiceImpl implements ShipmentService {
                 .shipmentTitle(shipment.getShipmentTitle())
                 .shipmentDescription(shipment.getShipmentDescription())
                 .shipmentType(shipment.getShipmentType())
+<<<<<<< HEAD
                 .isDelivered(shipment.isDelivered())
+=======
+                .delivered(shipment.getDelivered())
+>>>>>>> 9ea815c (Final Push)
                 .cost(shipment.getCost())
                 .shipmentDate(shipment.getShipmentDate())
                 .build();
     }
 
+<<<<<<< HEAD
 //    @Override
 //    public List<ShipmentResponse> filterShipments(String userId, ShipmentFilterRequest filterRequest) {
 //        Specification<ShipmentEntity> spec = Specification.where(ShipmentSpecification.hasUserId(userId));
@@ -142,11 +174,16 @@ public class ShipmentServiceImpl implements ShipmentService {
 //    }
     @Override
     public Page<ShipmentResponse> filterShipments(String userId, ShipmentFilterRequest filterRequest, Pageable pageable) {
+=======
+    @Override
+    public List<ShipmentResponse> filterShipments(String userId, ShipmentFilterRequest filterRequest) {
+>>>>>>> 9ea815c (Final Push)
         Specification<ShipmentEntity> spec = Specification.where(ShipmentSpecification.hasUserId(userId));
 
         if (filterRequest.getShipmentType() != null) {
             spec = spec.and(ShipmentSpecification.hasShipmentType(filterRequest.getShipmentType()));
         }
+<<<<<<< HEAD
         if (filterRequest.getStartDate() != null) {
             spec = spec.and(ShipmentSpecification.dateAfter(filterRequest.getStartDate()));
         }
@@ -169,4 +206,61 @@ public class ShipmentServiceImpl implements ShipmentService {
         return shipmentRepository.findAll(spec, pageable)
                 .map(this::convertToResponse);
     }
+=======
+
+        if (filterRequest.getStartDate() != null) {
+            spec = spec.and(ShipmentSpecification.dateAfter(filterRequest.getStartDate()));
+        }
+
+        if (filterRequest.getEndDate() != null) {
+            spec = spec.and(ShipmentSpecification.dateBefore(filterRequest.getEndDate()));
+        }
+
+        if (filterRequest.getMinCost() != null) {
+            spec = spec.and(ShipmentSpecification.costGTE(filterRequest.getMinCost()));
+        }
+
+        if (filterRequest.getMaxCost() != null) {
+            spec = spec.and(ShipmentSpecification.costLTE(filterRequest.getMaxCost()));
+        }
+
+        if (filterRequest.getKeyword() != null && !filterRequest.getKeyword().isEmpty()) {
+            spec = spec.and(ShipmentSpecification.titleOrDescContains(filterRequest.getKeyword()));
+        }
+
+        return shipmentRepository.findAll(spec)
+                .stream()
+                .map(this::convertToResponse)
+                .collect(Collectors.toList());
+    }
+//    @Override
+//    public Page<ShipmentResponse> filterShipments(String userId, ShipmentFilterRequest filterRequest, Pageable pageable) {
+//        Specification<ShipmentEntity> spec = Specification.where(ShipmentSpecification.hasUserId(userId));
+//
+//        if (filterRequest.getShipmentType() != null) {
+//            spec = spec.and(ShipmentSpecification.hasShipmentType(filterRequest.getShipmentType()));
+//        }
+//        if (filterRequest.getStartDate() != null) {
+//            spec = spec.and(ShipmentSpecification.dateAfter(filterRequest.getStartDate()));
+//        }
+//        if (filterRequest.getEndDate() != null) {
+//            spec = spec.and(ShipmentSpecification.dateBefore(filterRequest.getEndDate()));
+//        }
+//        if (filterRequest.getMinCost() != null) {
+//            spec = spec.and(ShipmentSpecification.costGTE(filterRequest.getMinCost()));
+//        }
+//        if (filterRequest.getMaxCost() != null) {
+//            spec = spec.and(ShipmentSpecification.costLTE(filterRequest.getMaxCost()));
+//        }
+//        if (filterRequest.getKeyword() != null && !filterRequest.getKeyword().isEmpty()) {
+//            spec = spec.and(ShipmentSpecification.titleOrDescContains(filterRequest.getKeyword()));
+//        }
+//        if (filterRequest.getIsDelivered() != null) {
+//            spec = spec.and(ShipmentSpecification.isDelivered(filterRequest.getIsDelivered()));
+//        }
+//
+//        return shipmentRepository.findAll(spec, pageable)
+//                .map(this::convertToResponse);
+//    }
+>>>>>>> 9ea815c (Final Push)
 }

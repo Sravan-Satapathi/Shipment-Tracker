@@ -1,6 +1,9 @@
 package com.sravan.shipment.dto;
 
+<<<<<<< HEAD
 import com.sravan.shipment.entity.ShipmentType;
+=======
+>>>>>>> 9ea815c (Final Push)
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -23,10 +26,17 @@ public class ShipmentRequest {
     private String shipmentDescription;
 
     @NotNull(message = "Shipment type cannot be empty")
+<<<<<<< HEAD
     private ShipmentType shipmentType;
 
     @NotNull(message = "Delivery status cannot be empty")
     private Boolean isDelivered;
+=======
+    private String shipmentType;
+
+    @NotNull(message = "Delivery status cannot be empty")
+    private Boolean delivered;
+>>>>>>> 9ea815c (Final Push)
 
     @Positive(message = "Cost must be positive")
     private double cost;

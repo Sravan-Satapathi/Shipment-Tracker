@@ -1,7 +1,10 @@
 package com.sravan.shipment.specification;
 
 import com.sravan.shipment.entity.ShipmentEntity;
+<<<<<<< HEAD
 import com.sravan.shipment.entity.ShipmentType;
+=======
+>>>>>>> 9ea815c (Final Push)
 import org.springframework.data.jpa.domain.Specification;
 
 import java.time.LocalDate;
@@ -12,7 +15,11 @@ public class ShipmentSpecification {
         return (root, query, cb) -> cb.equal(root.get("userId"), userId);
     }
 
+<<<<<<< HEAD
     public static Specification<ShipmentEntity> hasShipmentType(ShipmentType shipmentType) {
+=======
+    public static Specification<ShipmentEntity> hasShipmentType(String shipmentType) {
+>>>>>>> 9ea815c (Final Push)
         return (root, query, cb) -> cb.equal(root.get("shipmentType"), shipmentType);
     }
 

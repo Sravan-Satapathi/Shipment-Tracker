@@ -20,6 +20,13 @@ const Expenses = () => {
     const [editingExpense, setEditingExpense] = useState(null);
     const [modalLoading, setModalLoading] = useState(false);
 
+<<<<<<< HEAD
+=======
+    const [currentPage, setCurrentPage] = useState(0);
+    const [totalPages, setTotalPages] = useState(1);
+    const [pageSize, setPageSize] = useState(8); // default page size
+
+>>>>>>> 9ea815c (Final Push)
 
 
     useEffect(() => {
@@ -28,14 +35,26 @@ const Expenses = () => {
 
     useEffect(() => {
         setFilteredExpenses(expenses);
+<<<<<<< HEAD
     }, [expenses]);
+=======
+        setCurrentPage(0); // reset page
+        setTotalPages(Math.ceil(expenses.length / pageSize));
+        console.log(expenses);
+    }, [expenses, pageSize]);
+
+>>>>>>> 9ea815c (Final Push)
 
     const fetchExpenses = async () => {
         try {
             axios.defaults.withCredentials = true;
             const response = await axios.get(`${backendURL}/shipments`);
             if (response.status === 200) {
+<<<<<<< HEAD
                 setExpenses(response.data.content);
+=======
+                setExpenses(response.data);
+>>>>>>> 9ea815c (Final Push)
             }
         } catch (error) {
             console.error('Error fetching expenses:', error);
@@ -45,6 +64,11 @@ const Expenses = () => {
         }
     };
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 9ea815c (Final Push)
     const handleAddExpense = () => {
         setEditingExpense(null);
         setShowModal(true);
@@ -65,8 +89,18 @@ const Expenses = () => {
                 // Update existing expense
                 const response = await axios.put(`${backendURL}/shipments/${editingExpense.id}`, expenseData);
                 if (response.status === 200) {
+<<<<<<< HEAD
                     setExpenses(prev => prev.map(exp =>
                         exp.id === editingExpense.id ? response.data : exp
+=======
+                    console.log(response.data, "Worked!!");
+                    setExpenses(prev => prev.map(exp =>
+                        {
+                            if(exp.id === editingExpense.id) console.log(exp, editingExpense, "Worked");
+
+                            return exp.id === editingExpense.id ? response.data : exp;
+                        }
+>>>>>>> 9ea815c (Final Push)
                     ));
                     toast.success('Expense updated successfully');
                 }
@@ -121,7 +155,11 @@ const Expenses = () => {
             axios.defaults.withCredentials = true;
             const response = await axios.post(`${backendURL}/shipments/filter`, cleanFilters);
             if (response.status === 200) {
+<<<<<<< HEAD
                 setFilteredExpenses(response.data.content);
+=======
+                setFilteredExpenses(response.data);
+>>>>>>> 9ea815c (Final Push)
             }
         } catch (error) {
             console.error('Error filtering expenses:', error);
@@ -129,15 +167,36 @@ const Expenses = () => {
         }
     };
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 9ea815c (Final Push)
     const handleClearFilters = () => {
         setFilteredExpenses(expenses);
     };
 
+<<<<<<< HEAD
+=======
+
+    const getCurrentPageItems = () => {
+        const start = currentPage * pageSize;
+        const end = start + pageSize;
+        return filteredExpenses.slice(start, end);
+    };
+
+
+
+>>>>>>> 9ea815c (Final Push)
     if (loading) {
         return (
             <div className="min-vh-100 d-flex flex-column">
 
+<<<<<<< HEAD
             <Menubar />
+=======
+                <Menubar />
+>>>>>>> 9ea815c (Final Push)
                 <div className="flex-grow-1 d-flex align-items-center justify-content-center">
                     <div className="spinner-border text-primary" role="status">
                         <span className="visually-hidden">Loading...</span>
@@ -146,13 +205,21 @@ const Expenses = () => {
 
             </div>
 
+<<<<<<< HEAD
     );
+=======
+        );
+>>>>>>> 9ea815c (Final Push)
     }
 
     return (
         <div className="min-vh-100 bg-light">
 
+<<<<<<< HEAD
         <Menubar />
+=======
+            <Menubar />
+>>>>>>> 9ea815c (Final Push)
 
             <div className="container-fluid px-4 py-4">
                 {/* Header */}
@@ -205,8 +272,24 @@ const Expenses = () => {
                         )}
                     </div>
                 ) : (
+<<<<<<< HEAD
                     <div className="row g-4">
                         {filteredExpenses.map(expense => (
+=======
+                    // <div className="row g-4">
+                    //     {filteredExpenses.map(expense => (
+                    //         <div key={expense.id} className="col-md-6 col-lg-4 col-xl-3">
+                    //             <ExpenseCard
+                    //                 expense={expense}
+                    //                 onEdit={handleEditExpense}
+                    //                 onDelete={handleDeleteExpense}
+                    //             />
+                    //         </div>
+                    //     ))}
+                    // </div>
+                    <div className="row g-4">
+                        {getCurrentPageItems().map(expense => (
+>>>>>>> 9ea815c (Final Push)
                             <div key={expense.id} className="col-md-6 col-lg-4 col-xl-3">
                                 <ExpenseCard
                                     expense={expense}
@@ -216,7 +299,37 @@ const Expenses = () => {
                             </div>
                         ))}
                     </div>
+<<<<<<< HEAD
                 )}
+=======
+
+                )}
+
+                {totalPages > 1 && (
+                    <div className="d-flex justify-content-center mt-4 gap-2">
+                        <button
+                            className="btn btn-outline-secondary"
+                            onClick={() => setCurrentPage(prev => prev - 1)}
+                            disabled={currentPage === 0}
+                        >
+                            Previous
+                        </button>
+
+                        <span className="align-self-center">Page {currentPage + 1} of {totalPages}</span>
+
+                        <button
+                            className="btn btn-outline-secondary"
+                            onClick={() => setCurrentPage(prev => prev + 1)}
+                            disabled={currentPage + 1 === totalPages}
+                        >
+                            Next
+                        </button>
+                    </div>
+                )}
+
+
+
+>>>>>>> 9ea815c (Final Push)
             </div>
 
             {/* Modal */}

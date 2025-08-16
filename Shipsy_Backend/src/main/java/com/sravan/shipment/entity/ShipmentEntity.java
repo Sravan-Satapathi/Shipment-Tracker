@@ -28,6 +28,7 @@ public class ShipmentEntity {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String shipmentDescription;
 
+<<<<<<< HEAD
     // Enum field
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
@@ -36,6 +37,15 @@ public class ShipmentEntity {
     // Boolean field
     @Column(nullable = false)
     private boolean isDelivered;
+=======
+    //Category
+    @Column(nullable = false)
+    private String shipmentType;
+
+    // Boolean field
+    @Column(nullable = false)
+    private boolean delivered;
+>>>>>>> 9ea815c (Final Push)
 
     // Cost field
     @Column(nullable = false)
@@ -44,4 +54,11 @@ public class ShipmentEntity {
     // Date of shipment
     @Column(nullable = false)
     private LocalDate shipmentDate;
+<<<<<<< HEAD
+=======
+
+    public boolean getDelivered(){
+        return delivered;
+    }
+>>>>>>> 9ea815c (Final Push)
 }

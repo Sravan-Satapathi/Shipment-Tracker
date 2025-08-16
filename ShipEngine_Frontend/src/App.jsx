@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // import {ToastContainer} from "react-toastify";
 // import {Route, Routes} from "react-router-dom";
 // import Home from "./pages/Home.jsx";
@@ -28,6 +29,8 @@
 //
 // export default App
 
+=======
+>>>>>>> 9ea815c (Final Push)
 import {ToastContainer} from "react-toastify";
 import {Route, Routes} from "react-router-dom";
 import Home from "./pages/Home.jsx";
